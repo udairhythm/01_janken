@@ -59,21 +59,24 @@ const img = [
 
 
 // Random Probability
+let highProbHand;
+let midProbHand;
+let lowProbHand;
+
 const weightedRandom = () => {
     let randomValue = Math.random();
-    let highProbHand;
-    let midProbHand;
-    let lowProbHand;
 
     // Decide which hand has the high probability randomly for each time period
-    highProbHand = Math.floor(Math.random() * 3);
-    midProbHand = (highProbHand + 1) % 3;
-    lowProbHand = (highProbHand + 2) % 3;
+    if (timer === 20 || timer === 15 || timer === 7) {
+        highProbHand = Math.floor(Math.random() * 3);
+        midProbHand = (highProbHand + 1) % 3;
+        lowProbHand = (highProbHand + 2) % 3;
+    }
 
     if (timer >= 15) {
         // All hands have equal probability
         return Math.floor(Math.random() * 3);
-    } else if (timer >= 8) {
+    } else if (timer >= 7) {
         if (randomValue < 0.6) {
             return highProbHand;
         } else if (randomValue < 0.8) {
